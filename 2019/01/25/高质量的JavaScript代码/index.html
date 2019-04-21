@@ -73,69 +73,81 @@
 </header> -->
 
                 <main class="main">
-                    
-<section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/javaScript/">
-                        javaScript
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2019/01/25/高质量的JavaScript代码/">
-                            高质量的JavaScript代码
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/javaScript/">
+            javaScript
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        高质量的JavaScript代码
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-01-25
+        </li>
+        <li>
+            Ning
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>参考文献：《编写高质量代码改善 JavaScript 程序的 188 个建议》</p>
+<h3 id="建议-1：警惕-Unicode-乱码"><a href="#建议-1：警惕-Unicode-乱码" class="headerlink" title="建议 1：警惕 Unicode 乱码"></a>建议 1：警惕 Unicode 乱码</h3><p>根据 ECMA 标准规定 JavaScript 语言可以使用中文来命名变量或函数名，例如：</p>
+<pre><code>var 人名 = &quot;张三&quot;;
+function 睡觉(谁){
+  alert(谁 + &quot;:快睡觉！都半夜三更了。&quot;);
+}
 
-                    <ul class="post-date">
-                        <li>
-                            January 25, 2019
-                        </li>
-                        <li>
-                            Ning
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/01/25/高质量的JavaScript代码/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/jQuery/">
-                        jQuery
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2019/01/23/高质量的jQuery代码/">
-                            高质量的jQuery代码
-                        </a>
-                    </h1>
+睡觉(人名);
+</code></pre><p>但是在 ECMA 标准化之前，JavaScript 通常是不支持 Unicode 编码的，为了防止乱码，我们应该尽量使用基本字符进行编码。</p>
+<h3 id="建议-2：正确辨析-JavaScript-句法中的词、句和段"><a href="#建议-2：正确辨析-JavaScript-句法中的词、句和段" class="headerlink" title="建议 2：正确辨析 JavaScript 句法中的词、句和段"></a>建议 2：正确辨析 JavaScript 句法中的词、句和段</h3><pre><code>{ }             //对象
 
-                    <ul class="post-date">
-                        <li>
-                            January 23, 2019
-                        </li>
-                        <li>
-                            Ning
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/01/23/高质量的jQuery代码/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+function(){ }   //函数
 
+if(){ }         //条件
+
+for(){ }        //循环
+
+while(){ }      //循环
+
+switch(){ }     //多条件
+
+with(){ }       //作用于
+
+try(){ }        //异常处理
+</code></pre><h3 id="建议-3：减少全局变量污染"><a href="#建议-3：减少全局变量污染" class="headerlink" title="建议 3：减少全局变量污染"></a>建议 3：减少全局变量污染</h3><p>在任何函数外面直接执行 var 语句：</p>
+<pre><code>var f = &quot;value&quot;;
+</code></pre><p>直接添加一个属性到全局对象上，全局对象是所有全局变量的容器，在 Web 浏览器中，全局对象名为 window：</p>
+<pre><code>window.f = &quot;value&quot;;
+</code></pre><p>直接使用未经声明的变量，以这种方式定义的全局变量被称为隐式的全局变量：</p>
+<pre><code>f = &quot;value&quot;;
+</code></pre><h3 id="建议-4：注意-JavaScript-数据类型的特殊性"><a href="#建议-4：注意-JavaScript-数据类型的特殊性" class="headerlink" title="建议 4：注意 JavaScript 数据类型的特殊性"></a>建议 4：注意 JavaScript 数据类型的特殊性</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">值（value）</th>
+<th style="text-align:center">字符串操作环境</th>
+<th style="text-align:center">数字运算环境</th>
+<th style="text-align:center">逻辑运算环境</th>
+<th style="text-align:center">对象操作环境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">undefined</td>
+<td style="text-align:center">“undefined”</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">false</td>
+<td style="text-align:center">Error</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
