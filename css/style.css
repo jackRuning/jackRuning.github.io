@@ -243,12 +243,21 @@ code {
   max-width: 100%;
   border-radius: 4px;
 }
+table {
+  width: 100%;
+}
+table thead {
+  width: 100%;
+}
 table thead th {
-  border-top: #666 1px solid;
-  border-bottom: #666 1px solid;
+  border-top: #aaa 1px solid;
+  border-bottom: #aaa 1px solid;
+}
+table tbody {
+  width: 100%;
 }
 table tbody td {
-  border-bottom: #666 1px solid;
+  border-bottom: #ccc 1px solid;
 }
 .aside {
   overflow: hidden;
