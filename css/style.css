@@ -243,7 +243,7 @@ code {
   max-width: 100%;
   border-radius: 4px;
 }
-table thead td {
+table thead th {
   border-top: #666 1px solid;
   border-bottom: #666 1px solid;
 }
