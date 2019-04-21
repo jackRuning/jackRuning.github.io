@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="keywords" content="hexo, autumn">
+    <title>
+        Hexo
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@1.0.0/dist/hexo-infinite-scroll.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@1.0.0/dist/hexo-infinite-scroll.min.js"></script>
+    <script>
+        infiniteScroll()
+
+        // for mobile menu
+        $(function () {
+            $('.social-button').click(function () {
+                if ($('.social-links').hasClass('hide-links')) {
+                    $('.social-links').removeClass('hide-links')
+                } else {
+                    $('.social-links').addClass('hide-links')
+                }
+            })
+        })
+    </script>
+</head>
+
+    <body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <div class="container">
+            <!-- <header class="header">
+    <h1 class="title">
+        <a href="/" class="logo">
+            Hexo
+        </a>
+    </h1>
+    <h2 class="desc">
+        
+    </h2>
+
+    <nav class="links">
+        <button class="social-button">
+            menu
+        </button>
+        <ul class="social-links hide-links">
+            
+                <li>
+                    <a href="https://github.com/FrontendSophie">
+                        Github
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://www.linkedin.com/in/frontendsophie/">
+                        LinkedIn
+                    </a>
+                </li>
+                
+        </ul>
+    </nav>
+</header> -->
+
+                <main class="main">
+                    <article class="post">
+    
+    
+    <h4 class="post-cat">
+        <a href="/categories/jQuery/">
+            jQuery
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        如何编写高质量的jQuery代码
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-01-23
+        </li>
+        <li>
+            Ning
+        </li>
+    </ul>
+    <div class="post-content">
+        <h3 id="1-用对选择器"><a href="#1-用对选择器" class="headerlink" title="1. 用对选择器"></a>1. 用对选择器</h3><p>在 jQuery 中，你可以用多种选择器，选择同一个网页元素。每种选择器的性能是不一样的，你应该了解它们的性能差异。</p>
+<h4 id="1-最快的选择器：id-选择器和元素标签选择器"><a href="#1-最快的选择器：id-选择器和元素标签选择器" class="headerlink" title="(1) 最快的选择器：id 选择器和元素标签选择器"></a>(1) 最快的选择器：id 选择器和元素标签选择器</h4><pre><code>$(&quot;#id&quot;)
+
+$(&quot;form&quot;)
+
+$(&quot;input&quot;)
+</code></pre><p>遇到这些选择器的时候，jQuery 内部会自动调用浏览器的原生方法（例如<code>getElementById()</code>），所以它们的执行速度快。</p>
+<h4 id="2-较慢的选择器：class-选择器"><a href="#2-较慢的选择器：class-选择器" class="headerlink" title="(2) 较慢的选择器：class 选择器"></a>(2) 较慢的选择器：class 选择器</h4><p><code>$(&quot;.className&quot;)</code>的性能，取决于不同的浏览器。Firefox、Safari、Chrome、Opera 浏览器，都有原生方法<code>getElementByClassName()</code>，所以速度并不慢。</p>
+<h4 id="3-最慢的选择器：伪类选择器和属性选择器"><a href="#3-最慢的选择器：伪类选择器和属性选择器" class="headerlink" title="(3) 最慢的选择器：伪类选择器和属性选择器"></a>(3) 最慢的选择器：伪类选择器和属性选择器</h4><p>例如：找出网页中所有的隐藏元素，就要用到伪类选择器：<code>$(&quot;:hidden&quot;)</code>。属性选择器的例子则是：<code>$(&quot;[attribute=value]&quot;)</code>。这两种语句是最慢的，因为浏览器没有针对它们的原生方法。但是，一些浏览器的新版本，增加了<code>querySelector()</code>和 <code>querySelectorAll()</code> 方法，因此会使这类选择器的性能有大幅提高。</p>
+<p><strong>所以，ID 选择器遥遥领先，然后是标签选择器，第三是 Class 选择器，其他选择器都非常慢。</strong></p>
+<h3 id="2-理解子元素和父元素的关系"><a href="#2-理解子元素和父元素的关系" class="headerlink" title="2. 理解子元素和父元素的关系"></a>2. 理解子元素和父元素的关系</h3><p>下面六个选择器，都是从父元素中选择子元素。你知道哪个速度最快，哪个速度最慢吗？</p>
+<pre><code>$(&quot;.child&quot;, $parent)
+
+$parent.find(&quot;.child&quot;)
+
+$parent.children(&quot;.child&quot;)
+
+$(&quot;#parent &gt; .child&quot;)
+
+$(&quot;#parent .child&quot;)
+
+$(&quot;.child&quot;, $(&quot;#parent&quot;))
+</code></pre><h4 id="quot-child-quot-parent"><a href="#quot-child-quot-parent" class="headerlink" title="$(&quot;.child&quot;, $parent)"></a><code>$(&quot;.child&quot;, $parent)</code></h4><p>这条语句的意思是，给定一个 DOM 对象，然后从中选择一个子元素。jQuery 会自动把这条语句转成<code>$.parent.find(&quot;child&quot;)</code>，这会导致一定的性能损失。它比最快的形式慢了 5%-10%。</p>
+<h4 id="parent-find-quot-child-quot"><a href="#parent-find-quot-child-quot" class="headerlink" title="$parent.find(&quot;.child&quot;)"></a><code>$parent.find(&quot;.child&quot;)</code></h4><p>这条是最快的语句。<code>.find()</code>方法会调用浏览器的原生方法（<code>getElementById</code>, <code>getElementByName</code>，<code>getElementByTagName</code> 等等），所以速度较快。</p>
+<h4 id="parent-children-quot-child-quot"><a href="#parent-children-quot-child-quot" class="headerlink" title="$parent.children(&quot;.child&quot;)"></a><code>$parent.children(&quot;.child&quot;)</code></h4><p>这条语句在 jQuery 内部，会使用 <code>$.sibling()</code> 和 javascript 的 <code>nextSibling()</code> 方法，一个个遍历节点。它比最快的形式大约慢 50%。</p>
+<h4 id="quot-parent-gt-child-quot"><a href="#quot-parent-gt-child-quot" class="headerlink" title="$(&quot;#parent &gt; .child&quot;)"></a><code>$(&quot;#parent &gt; .child&quot;)</code></h4><p>jQuery 内部使用 Sizzle 引擎，处理各种选择器。Sizzle 引擎的选择顺序是从右到左，所以这条语句是先选 <code>.child</code>，然后再一个个过滤出父元素 <code>#parent</code>，这导致它比最快的形式大约慢 70%。</p>
+<h4 id="‘-parent-child’"><a href="#‘-parent-child’" class="headerlink" title="$(‘#parent .child’)"></a><code>$(‘#parent .child’)</code></h4><p>这条语句与上一条是同样的情况。但是，上一条只选择直接的子元素，这一条可以于选择多级子元素，所以它的速度更慢，大概比最快的形式慢了 77%。</p>
+<h4 id="quot-child-quot-quot-parent-quot"><a href="#quot-child-quot-quot-parent-quot" class="headerlink" title="$(&quot;.child&quot;, $(&quot;#parent&quot;))"></a><code>$(&quot;.child&quot;, $(&quot;#parent&quot;))</code></h4><p>jQuery 内部会将这条语句转成 <code>$(&quot;#parent&quot;).find(&quot;.child&quot;)</code>，比最快的形式慢了 23%。</p>
+<p><strong>所以，最佳选择是 <code>$parent.find(&quot;.child&quot;)</code>。而且，由于 <code>$parent</code> 往往在前面的操作已经生成，jQuery 会进行缓存，所以进一步加快了执行速度。</strong></p>
+<h3 id="3-不要过度使用-jQuery"><a href="#3-不要过度使用-jQuery" class="headerlink" title="3. 不要过度使用 jQuery"></a>3. 不要过度使用 jQuery</h3><p>jQuery 速度再快，也无法与原生的 javascript 方法相比。所以有原生方法可以使用的场合，尽量避免使用 jQuery。以最简单的选择器为例，<code>document.getElementById(&quot;foo&quot;)</code> 要比 <code>$(&quot;#foo&quot;)</code> 快 10 多倍。</p>
+<p>再来看一个例子，为 a 元素绑定一个处理点击事件的函数：</p>
+<pre><code>$(&quot;a&quot;).click(function(){
+    alert($(this).attr(&quot;id&quot;))
+});
+</code></pre><p>这段代码的意思是，点击 a 元素后，弹出该元素的 id 属性。为了获取这个属性，必须连续两次调用 jQuery，第一次是 <code>$(this)</code>，第二次是 <code>attr(&quot;id&quot;)</code>。</p>
+<p>事实上，这种处理完全不必要。更正确的写法是，直接采用 javascript 原生方法，调用 <code>this.id</code>:</p>
+<pre><code>$(&quot;a&quot;).click(function(){
+    alert(this.id)
+});
+</code></pre><p>根据测试，<code>this.id</code> 的速度比 <code>$(this).attr(&quot;id&quot;)</code> 快了 20 多倍。</p>
+<h3 id="4-缓存-jQuery"><a href="#4-缓存-jQuery" class="headerlink" title="4. 缓存 jQuery"></a>4. 缓存 jQuery</h3><p>选中某一个网页元素，是开销很大的步骤。所以，使用选择器的次数应该越少越好，并且尽可能缓存选中的结果，便于以后反复使用。比如，下面这样的写法就是糟糕的写法：</p>
+<pre><code>jQuery(&quot;#top&quot;).find(&quot;p.classA&quot;)
+jQuery(&quot;#top&quot;).find(&quot;p.classB&quot;)
+</code></pre><p>更好的写法是：</p>
+<pre><code>var cached = jQuery(&quot;#top&quot;)
+
+cached.find(&quot;p.classA&quot;)
+cached.find(&quot;p.classB&quot;)
+</code></pre><p>根据测试，缓存比不缓存，快了 2 – 3 倍。</p>
+<h3 id="5-使用链式写法"><a href="#5-使用链式写法" class="headerlink" title="5. 使用链式写法"></a>5. 使用链式写法</h3><p>jQuery 的一大特点，就是链式调用。</p>
+<pre><code>$(&quot;div&quot;).find(&quot;h3&quot;).eq(2).html(&quot;Hello&quot;)
+</code></pre><p>采用链式写法时，jQuery 自动缓存每一步的结果，因此比非链式写法要快。根据测试，链式写法比（不使用缓存的）非链式写法，大约快了 25%。</p>
+<h3 id="6-事件的委托处理（Event-Delegation）"><a href="#6-事件的委托处理（Event-Delegation）" class="headerlink" title="6. 事件的委托处理（Event Delegation）"></a>6. 事件的委托处理（Event Delegation）</h3><p>javascript 的事件模型，采用”冒泡”模式，也就是说，子元素的事件会逐级向上”冒泡”，成为父元素的事件。利用这一点，可以大大简化事件的绑定。比如，有一个表格（table 元素），里面有 100 个格子（td 元素），现在要求在每个格子上面绑定一个点击事件，请问是否需要将下面的命令执行 100 次？</p>
+<pre><code>$(&quot;td&quot;).on(&quot;click&quot;, function(){
+    $(this).toggleClass(&quot;click&quot;)
+});
+</code></pre><p>回答是不需要，我们只要把这个事件绑定在 table 元素上面就可以了，因为 td 元素发生点击事件之后，这个事件会”冒泡”到父元素 table 上面，从而被监听到。因此，这个事件只需要在父元素绑定 1 次即可，而不需要在子元素上绑定 100 次，从而大大提高性能。这就叫事件的”委托处理”，也就是子元素”委托”父元素处理这个事件。</p>
+<pre><code>$(&quot;table&quot;).on(&quot;click&quot;, &quot;td&quot;, function(){
+    $(this).toggleClass(&quot;click&quot;)
+});
+</code></pre><p>更好的写法，则是把事件绑定在 document 对象上面：</p>
+<pre><code>$(document).on(&quot;click&quot;, &quot;td&quot;, function(){
+    $(this).toggleClass(&quot;click&quot;)
+});
+</code></pre><p>如果要取消事件的绑定，就使用 off()方法：</p>
+<pre><code>$(document).off(&quot;click&quot;, &quot;td&quot;)
+</code></pre><h3 id="7-减少-DOM-操作"><a href="#7-减少-DOM-操作" class="headerlink" title="7. 减少 DOM 操作"></a>7. 减少 DOM 操作</h3><p>DOM 操作的开销很大，因此不要频繁使用<code>.append()</code>、 <code>.insertBefore()</code>和<code>.insetAfter()</code>这样的方法。如果要插入多个元素，就先把它们合并，然后再一次性插入。根据测试，合并插入比不合并插入，快了将近 10 倍。</p>
+<p>如果你要对一个 DOM 元素进行大量处理，应该先用<code>.detach()</code>方法，把这个元素从 DOM 中取出来，处理完毕以后，再重新插回文档。</p>
+<p>根据测试，使用<code>.detach()</code>方法比不使用时，快了 60%。</p>
+<p>如果你要在 DOM 元素上储存数据，不要写成下面这样：</p>
+<pre><code>var elem = $(&quot;#elem&quot;);
+elem.data(key,value);
+</code></pre><p>而要写成</p>
+<pre><code>var elem = $(&quot;#elem&quot;);
+$.data(elem[0],key,value);
+</code></pre><p>根据测试， 后一种写法要比前一种写法，快了将近 10 倍。因为<code>elem.data()</code>方法是定义在 jQuery 函数的 prototype 对象上面的， 而<code>$.data()</code>方法是定义 jQuery 函数上面的，调用的时候不从复杂的 jQuery 对象上调用，所以速度快得多。</p>
+<p>插入 html 代码的时候，浏览器原生的<code>innerHTML()</code>方法比 jQuery 对象的<code>html()</code>更快。</p>
+<h3 id="8-正确处理循环"><a href="#8-正确处理循环" class="headerlink" title="8. 正确处理循环"></a>8. 正确处理循环</h3><p>循环总是一种比较耗时的操作，如果可以使用复杂的选择器直接选中元素，就不要使用循环，去一个个辨认元素。在性能方面，对于 jQuery each 方法这种优雅实现是有代价的。javascript 原生循环方法<code>for</code>和<code>while</code>，要比 jQuery 的<code>.each()</code>方法快，应该优先使用原生方法。</p>
+<h3 id="9-选择作用域链最短的方法"><a href="#9-选择作用域链最短的方法" class="headerlink" title="9. 选择作用域链最短的方法"></a>9. 选择作用域链最短的方法</h3><p>严格地说，这一条原则对所有 javascript 编程都适用，而不仅仅针对 jQuery。我们知道，javascript 的变量采用链式作用域。读取变量的时候，先在当前作用域寻找该变量，如果找不到，就前往上一层的作用域寻找该变量。这样的设计，使得读取局部变量比读取全局变量快得多。</p>
+<p>请看下面两段代码，第一段代码是读取全局变量：</p>
+<pre><code>var a = 0;
+    function x(){
+    a += 1;
+}
+</code></pre><p>第二段代码是读取局部变量：</p>
+<pre><code>function y(){
+    var a = 0;
+    a += 1;
+}
+</code></pre><p>第二段代码读取变量 a 的时候，不用前往上一层作用域，所以要比第一段代码快 5-6 倍。同理，在调用对象方法的时候，closure 模式要比 prototype 模式更快。</p>
+<p>prototype 模式：</p>
+<pre><code>var X = function(name){ this.name = name; }
+X.prototype.get_name = function() { return this.name; };
+</code></pre><p>closure 模式：</p>
+<pre><code>var Y = function(name) {
+    var y = { name: name };
+    return {
+        &quot;get_name&quot;: function() { return y.name; }
+    };
+};
+</code></pre><p>同样是<code>get_name()</code>方法，closure 模式更快。</p>
+<h3 id="10-使用-Pub-Sub-模式管理事件"><a href="#10-使用-Pub-Sub-模式管理事件" class="headerlink" title="10. 使用 Pub/Sub 模式管理事件"></a>10. 使用 Pub/Sub 模式管理事件</h3><p>当发生某个事件后，如果要连续执行多个操作，最好不要写成下面这样：</p>
+<pre><code>function doSomething{
+    doSomethingElse();
+    doOneMoreThing();
+}
+</code></pre><p>而要改用事件触发的形式：</p>
+<pre><code>function doSomething{
+    $.trigger(&quot;DO_SOMETHING_DONE&quot;);
+}
+
+$(document).on(&quot;DO_SOMETHING_DONE&quot;, function(){
+    doSomethingElse();
+});
+</code></pre><p>还可以考虑使用 deferred 对象。</p>
+<pre><code>function doSomething(){
+    var dfd = new $.Deferred();
+    return dfd.promise();
+}
+
+function doSomethingElse(){
+    $.when(doSomething()).then(//The next thing);
+}
+</code></pre><h3 id="11-将某些函数推迟到-window-load执行"><a href="#11-将某些函数推迟到-window-load执行" class="headerlink" title="11. 将某些函数推迟到$(window).load执行"></a>11. 将某些函数推迟到<code>$(window).load</code>执行</h3><p>尽管<code>$(document).ready</code>确实很有用，它可以在页面渲染时,其它元素还没下载完成就执行。如果你发现你的页面一直是载入中的状态，很有可能就是<code>$(document).ready</code>函数引起的。</p>
+<p>你可以通过将 jquery 函数绑定到<code>$(window).load</code>事件的方法来减少页面载入时的 cpu 使用率。它会在所有的 html（包括 iframe）被下载完成后执行。</p>
+
+    </div>
+</article>
+                </main>
+                <aside class="aside">
+                    <section class="aside-section">
+                        
+    <h1>Categories</h1>
+
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a></li></ul>
+
+                    </section>
+                    <section class="aside-section">
+                        
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a></li></ul>
+
+
+                    </section>
+                    <section class="aside-section tag">
+                        
+    <h1>Tags</h1>
+
+    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/高质量代码/">高质量代码</a></li></ul>
+
+                    </section>
+                </aside>
+        </div>
+    </body>
+
+</html>
