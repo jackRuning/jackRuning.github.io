@@ -243,11 +243,11 @@ code {
   max-width: 100%;
   border-radius: 4px;
 }
-table thead tr {
+table thead td {
   border-top: #666 1px solid;
   border-bottom: #666 1px solid;
 }
-table tbody tr {
+table tbody td {
   border-bottom: #666 1px solid;
 }
 .aside {
