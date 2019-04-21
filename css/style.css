@@ -245,19 +245,30 @@ code {
 }
 table {
   width: 100%;
+  border-spacing: 0px;
 }
 table thead {
   width: 100%;
 }
 table thead th {
   border-top: #aaa 1px solid;
+  border-left: #aaa 1px solid;
   border-bottom: #aaa 1px solid;
+  height: 30px;
+}
+table thead th:last-child {
+  border-right: #aaa 1px solid;
 }
 table tbody {
   width: 100%;
 }
 table tbody td {
   border-bottom: #ccc 1px solid;
+  border-left: #aaa 1px solid;
+  height: 30px;
+}
+table tbody td:last-child {
+  border-right: #aaa 1px solid;
 }
 .aside {
   overflow: hidden;
