@@ -243,21 +243,8 @@ code {
   max-width: 100%;
   border-radius: 4px;
 }
-.post table {
-  max-width: 100%;
-  width: 100%;
-}
-.post table thead tr {
-  width: 100%;
-  display: flex;
-  flex-decoration: row;
-  just-content: space-between;
-}
-.post table tbody tr {
-  width: 100%;
-  display: flex;
-  flex-decoration: row;
-  just-content: space-between;
+.post tr {
+  border: #666 1px solid;
 }
 .aside {
   overflow: hidden;
