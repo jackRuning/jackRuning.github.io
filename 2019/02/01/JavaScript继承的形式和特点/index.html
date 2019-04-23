@@ -73,69 +73,76 @@
 </header> -->
 
       <main class="main">
-        
-<section class="posts">
+        <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/javaScript/">
-                        javaScript
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2019/02/01/JavaScript继承的形式和特点/">
-                            JavaScript继承的形式和特点
-                        </a>
-                    </h1>
+    
+    <h4 class="post-cat">
+        <a href="/categories/javaScript/">
+            javaScript
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        JavaScript继承的形式和特点
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-02-01
+        </li>
+        <li>
+            Ning
+        </li>
+    </ul>
+    <div class="post-content">
+        <h3 id="1-原型链继承"><a href="#1-原型链继承" class="headerlink" title="1. 原型链继承"></a>1. 原型链继承</h3><pre><code>function Person(name) {
+  this.name = name;
+}
 
-                    <ul class="post-date">
-                        <li>
-                            February 1, 2019
-                        </li>
-                        <li>
-                            Ning
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/02/01/JavaScript继承的形式和特点/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/javaScript/">
-                        javaScript
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2019/01/25/高质量的JavaScript代码/">
-                            高质量的JavaScript代码
-                        </a>
-                    </h1>
+Person.prototype.speak = function() {
+  console.log(`my name is ${this.name}`);
+};
 
-                    <ul class="post-date">
-                        <li>
-                            January 25, 2019
-                        </li>
-                        <li>
-                            Ning
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/01/25/高质量的JavaScript代码/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+var person = new Person(&quot;mike&quot;);
+</code></pre><p>特点：非常纯粹的继承关系，实例是子类的实例，也是父类的实例，父类新增原型方法/原型属性，子类都能访问到。</p>
+<p>缺点：来自原型对象的所有属性被所有实例共享，创建子类实例时，无法向父类构造函数传参。</p>
+<h3 id="2-构造继承"><a href="#2-构造继承" class="headerlink" title="2. 构造继承"></a>2. 构造继承</h3><pre><code>function Person(name) {
+  this.name = name;
+  this.speak = function() {
+    console.log(`my name is ${this.name}`);
+  };
+}
 
+function Man(sex, name) {
+  Person.call(this, name);
+  this.sex = sex;
+}
+
+var man = new Man(&quot;male&quot;, &quot;mike&quot;);
+</code></pre><p>特点：创建子类实例时，可以向父类传递参数，解决了子类实例共享父类引用属性的问题。</p>
+<p>缺点：实例并不是父类的实例，只是子类的实例；只能继承父类的实例属性和方法，不能继承原型属性/方法；无法实现函数复用，每个子类都有父类实例函数的副本，影响性能。</p>
+<h3 id="3-组合继承"><a href="#3-组合继承" class="headerlink" title="3. 组合继承"></a>3. 组合继承</h3><pre><code>function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.speak = function() {
+  console.log(`my name is ${this.name}`);
+};
+
+function Man(sex, name) {
+  Person.call(this, name);
+  this.sex = sex;
+}
+
+Man.prototype = new Person();
+Man.prototype.constructor = Man;
+
+var man = new Man(&quot;male&quot;, &quot;mike&quot;);
+</code></pre><p>特点：通过将父类实例作为子类原型，实现函数复用，因此可以继承实例属性/方法，也可以继承原型属性/方法；既是子类的实例，也是父类的实例；可传参，函数可复用。</p>
+<p>缺点：调用了两次父类构造函数，多消耗了内存。</p>
+
+    </div>
+</article>
       </main>
       <aside class="aside">
         <section class="aside-section">
