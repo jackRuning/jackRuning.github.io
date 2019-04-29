@@ -129,8 +129,8 @@ code {
   position: relative;
   text-align: center;
   border-bottom: 1px dashed #ddd;
-  margin: 0 0 4.5em;
-  padding: 0 0 3em;
+  margin: 0 0 3em;
+  padding: 0 0 2em;
 }
 .post::after {
   content: '';
@@ -149,18 +149,16 @@ code {
 }
 .post .post-cat:first-of-type::after {
   content: "\00B7";
-  margin: 0 0.75em;
   color: #f78769;
 }
 .post .post-cat:last-of-type::after {
   content: '';
 }
 .post .post-cat a {
-  font: 700 13px Lato-Bold;
+  font: bold 14px Lato-Bold;
   color: #f78769;
   text-decoration: none;
   transition: 0.3s;
-  text-transform: upperCase;
   letter-spacing: 1px;
 }
 .post .post-cat a:hover {
@@ -168,7 +166,7 @@ code {
 }
 .post .post-title {
   margin: 0 0 0.5em;
-  font: 1.953em Lora;
+  font: 1.5rem Lora;
   color: #777;
 }
 .post .post-title::after {
@@ -187,14 +185,13 @@ code {
   padding: 0;
   list-style: none;
   color: #bbb;
-  font: 14px/1.6 Lato;
+  font: 14px/0.1 Lato;
 }
 .post .post-date li {
   display: inline-block;
 }
 .post .post-date li:first-child::after {
   content: "\00B7";
-  margin: 0 0.75em;
 }
 .post .post-cover {
   position: relative;
