@@ -73,40 +73,55 @@
 </header> -->
 
       <main class="main">
-        
-<section class="posts">
-    
         <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/jQuery/">
-                        jQuery
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2019/01/23/高质量的jQuery代码/">
-                            高质量的jQuery代码
-                        </a>
-                    </h1>
+    
+    
+    <h4 class="post-cat">
+        <a href="/categories/javaScript/">
+            javaScript
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        LeetCode_1.Two Sum
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-02-05
+        </li>
+        <li>
+            Ning
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:</p>
+<pre><code>Given nums = [2, 7, 11, 15], target = 9,
 
-                    <ul class="post-date">
-                        <li>
-                            January 23, 2019
-                        </li>
-                        <li>
-                            Ning
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/01/23/高质量的jQuery代码/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+</code></pre><hr>
+<p>Code:</p>
+<pre><code>/**
+* @param {number[]} nums
+* @param {number} target
+* @return {number[]}
+*/
 
+var twoSum = function(nums, target) {
+    for(var i = 0; i &lt; nums.length - 1; i++){
+        for(var j = i + 1; j &lt; nums.length; j++){
+            if(nums[i] + nums[j] === target){
+              return [i, j]
+            }
+        }
+    }
+};
+</code></pre>
+    </div>
+</article>
       </main>
       <aside class="aside">
         <section class="aside-section">

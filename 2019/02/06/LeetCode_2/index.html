@@ -73,40 +73,75 @@
 </header> -->
 
       <main class="main">
-        
-<section class="posts">
-    
         <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/jQuery/">
-                        jQuery
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2019/01/23/高质量的jQuery代码/">
-                            高质量的jQuery代码
-                        </a>
-                    </h1>
+    
+    
+    <h4 class="post-cat">
+        <a href="/categories/javaScript/">
+            javaScript
+        </a>
+    </h4>
+    
+    
+    <h2 class="post-title">
+        LeetCode_2.Add Two Numbers
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-02-06
+        </li>
+        <li>
+            Ning
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Example:</p>
+<pre><code>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+Output: 7 -&gt; 0 -&gt; 8
+Explanation: 342 + 465 = 807.
+</code></pre><hr>
+<p>Code:</p>
+<pre><code>/**
+* Definition for singly-linked list.
+* function ListNode(val) {
+*     this.val = val;
+*     this.next = null;
+* }
+*/
+/**
+* @param {ListNode} l1
+* @param {ListNode} l2
+* @return {ListNode}
+*/
 
-                    <ul class="post-date">
-                        <li>
-                            January 23, 2019
-                        </li>
-                        <li>
-                            Ning
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/01/23/高质量的jQuery代码/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
-
+var addTwoNumbers = function(l1, l2) {
+    const head = new ListNode(0);
+    var point = head;
+    var append = 0;
+    var run = function (l1, l2, point) {
+        if (l1 === null &amp;&amp; l2 === null) {
+            if (append == 1) {
+                point.next = new ListNode(1);
+            }
+            return head.next;
+        }
+        var sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + append;
+        if (sum &gt; 9) {
+            point.next = new ListNode(sum%10);
+            append = 1;
+        } else {
+            point.next = new ListNode(sum);
+            append = 0;
+        }
+        return run(l1 ? l1.next : null, l2 ? l2.next : null, point.next);
+    };
+    return run(l1, l2, point)
+};
+</code></pre>
+    </div>
+</article>
       </main>
       <aside class="aside">
         <section class="aside-section">
