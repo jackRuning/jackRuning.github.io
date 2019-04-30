@@ -90,38 +90,59 @@
     
     
     <h2 class="post-title">
-        LeetCode:Two Sum
+        LeetCode:Longest Palindromic Substring
     </h2>
     <ul class="post-date">
         <li>
-            2019-02-05
+            2019-02-07
         </li>
         <li>
             Ning
         </li>
     </ul>
     <div class="post-content">
-        <p>给定一个整数数组，返回两个数字的索引，使它们加起来成为一个特定的目标。</p>
-<p>你可以假定每个输入只有一个解决方案，并且不能使用同一个元素两次。</p>
-<p>Example:</p>
-<pre><code>Input: nums = [2, 7, 11, 15], target = 9.
-Output: [0, 1]
-Explanation: Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1]
+        <p>给定一个字符串 <code>s</code> 找到这个字符串中的最长回文子串，你可以假设字符串 <code>s</code> 的最大长度是 <code>1000</code> 。</p>
+<p>Example 1:</p>
+<pre><code>Input: &quot;babad&quot;
+Output: &quot;bab&quot;
+Explanation: &quot;aba&quot; is also a valid answer.
+</code></pre><p>Example 2:</p>
+<pre><code>Input: &quot;cbbd&quot;
+Output: &quot;bb&quot;
 </code></pre><p>Code:</p>
 <pre><code>/**
-* @param {number[]} nums
-* @param {number} target
-* @return {number[]}
+* @param {string} s
+* @return {string}
 */
 
-let twoSum = function(nums, target) {
-    for(let i = 0; i &lt; nums.length - 1; i++){
-        for(let j = i + 1; j &lt; nums.length; j++){
-            if(nums[i] + nums[j] === target){
-              return [i, j]
+let longestPalindrome = function(s) {
+    if (s.length === 0) {  
+        return &quot;&quot;
+    }
+
+    let max_len = 1, ans = s[0];
+
+    for (let start = 0, end = 0, expand = 1, n = s.length; start &lt; n; start++) {
+        end = start;
+        while (end + 1 &lt; n &amp;&amp; s[end]  === s[end+1]) {
+            end++;
+        }
+        for (expand = 1, max_expand = Math.min(start, n - 1 - end); expand &lt;= max_expand; expand++) {
+            if (s[start - expand] !== s[end + expand]) {
+                break;
             }
         }
+
+        const curr_len = end - start + 2 * (expand - 1) + 1;
+        ans = curr_len &gt;= max_len ? s.slice(start - expand + 1, end + expand) : ans;
+        max_len = Math.max(max_len, curr_len);
+
+        if (max_len === n) {
+            break;
+        }
     }
+
+    return ans;
 };
 </code></pre>
     </div>
