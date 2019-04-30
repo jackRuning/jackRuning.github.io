@@ -82,9 +82,15 @@
         </a>
     </h4>
     
+    <h4 class="post-cat">
+        <a href="/categories/javaScript/LeetCode/">
+            LeetCode
+        </a>
+    </h4>
+    
     
     <h2 class="post-title">
-        LeetCode_1.Two Sum
+        LeetCode:Two Sum
     </h2>
     <ul class="post-date">
         <li>
@@ -95,8 +101,8 @@
         </li>
     </ul>
     <div class="post-content">
-        <p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+        <p>给定一个整数数组，返回两个数字的索引，使它们加起来成为一个特定的目标。</p>
+<p>你可以假定每个输入只有一个解决方案，并且不能使用同一个元素两次。</p>
 <p>Example:</p>
 <pre><code>Given nums = [2, 7, 11, 15], target = 9,
 
@@ -109,9 +115,9 @@ return [0, 1].
 * @return {number[]}
 */
 
-var twoSum = function(nums, target) {
-    for(var i = 0; i &lt; nums.length - 1; i++){
-        for(var j = i + 1; j &lt; nums.length; j++){
+let twoSum = function(nums, target) {
+    for(let i = 0; i &lt; nums.length - 1; i++){
+        for(let j = i + 1; j &lt; nums.length; j++){
             if(nums[i] + nums[j] === target){
               return [i, j]
             }
@@ -134,7 +140,7 @@ var twoSum = function(nums, target) {
         
     <h1>Categories</h1>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/">javaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/设计模式/">设计模式</a></li></ul></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/">javaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/设计模式/">设计模式</a></li></ul></li></ul>
 
       </section>
       <section class="aside-section">

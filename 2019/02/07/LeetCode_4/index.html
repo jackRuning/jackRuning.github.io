@@ -90,60 +90,45 @@
     
     
     <h2 class="post-title">
-        LeetCode:Longest Substring Without Repeating Characters
+        LeetCode:Median of Two Sorted Arrays
     </h2>
     <ul class="post-date">
         <li>
-            2019-02-06
+            2019-02-07
         </li>
         <li>
             Ning
         </li>
     </ul>
     <div class="post-content">
-        <p>给定一个字符串，在不重复字符的情况下查找最长子字符串的长度。</p>
+        <p>大小分别为m和n的已排序数组nums1和nums2。找到两个排序数组的中值。总体运行时复杂性应为O（log（m+n））。</p>
+<p>你可以假定nums1和nums2不能同时为空。</p>
 <p>Example 1:</p>
-<pre><code>Input: &quot;abcabcbb&quot;
-Output: 3 
-Explanation: The answer is &quot;abc&quot;, with the length of 3. 
+<pre><code>nums1 = [1, 3]
+nums2 = [2]
+
+The median is 2.0
 </code></pre><p>Example 2:</p>
-<pre><code>Input: &quot;bbbbb&quot;
-Output: 1
-Explanation: The answer is &quot;b&quot;, with the length of 1.
-</code></pre><p>Example 3:</p>
-<pre><code>Input: &quot;pwwkew&quot;
-Output: 3
-Explanation: The answer is &quot;wke&quot;, with the length of 3. 
-            Note that the answer must be a substring, 
-&quot;pwke&quot; is a subsequence and not a substring.
+<pre><code>nums1 = [1, 2]
+nums2 = [3, 4]
+
+The median is (2 + 3)/2 = 2.5
 </code></pre><p>Code:</p>
 <pre><code>/**
-* @param {string} s
+* @param {number[]} nums1
+* @param {number[]} nums2
 * @return {number}
 */
 
-let lengthOfLongestSubstring = function(s) {
-    let map = new Map();
-    let longest = 0;
-    let currentLength = 0;
-    let lastDupl = 0;
-
-    for (let i = 0; i &lt; s.length; i++) {
-        let c = s.charAt(i);
-        if (!map.has(c) || map.get(c) &lt; lastDupl) {
-            currentLength++;
-        }
-        else {
-            lastDupl = map.get(c);
-            currentLength = i - lastDupl;
-        }
-        map.set(c,i);
-
-        if (longest &lt; currentLength) {
-            longest = currentLength;   
-        }
-    }
-    return longest;
+let findMedianSortedArrays = function(nums1, nums2, nTillMedian=(nums1.length + nums2.length) / 2) {
+    const next = (nums2.length === 0 || (nums1.length &gt; 0 &amp;&amp; nums1[0] &lt; nums2[0]))
+        ? nums1.shift()
+        : nums2.shift();
+    return nTillMedian === 0.5
+        ? next
+        : nTillMedian === 1
+            ? (next + findMedianSortedArrays(nums1, nums2, 0.5)) / 2
+            : findMedianSortedArrays(nums1, nums2, nTillMedian - 1);
 };
 </code></pre>
     </div>

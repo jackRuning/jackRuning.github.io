@@ -82,9 +82,15 @@
         </a>
     </h4>
     
+    <h4 class="post-cat">
+        <a href="/categories/javaScript/LeetCode/">
+            LeetCode
+        </a>
+    </h4>
+    
     
     <h2 class="post-title">
-        LeetCode_2.Add Two Numbers
+        LeetCode:Add Two Numbers
     </h2>
     <ul class="post-date">
         <li>
@@ -95,8 +101,8 @@
         </li>
     </ul>
     <div class="post-content">
-        <p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+        <p>你将得到两个表示两个非负整数的非空链表。数字以相反的顺序存储，每个节点包含一个数字。添加这两个数字，并将其作为链接列表返回。</p>
+<p>你可以假定这两个数字不包含任何前导零，除了数字0本身。</p>
 <p>Example:</p>
 <pre><code>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
 Output: 7 -&gt; 0 -&gt; 8
@@ -115,18 +121,18 @@ Explanation: 342 + 465 = 807.
 * @return {ListNode}
 */
 
-var addTwoNumbers = function(l1, l2) {
+let addTwoNumbers = function(l1, l2) {
     const head = new ListNode(0);
-    var point = head;
-    var append = 0;
-    var run = function (l1, l2, point) {
+    let point = head;
+    let append = 0;
+    let run = function (l1, l2, point) {
         if (l1 === null &amp;&amp; l2 === null) {
             if (append == 1) {
                 point.next = new ListNode(1);
             }
             return head.next;
         }
-        var sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + append;
+        let sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + append;
         if (sum &gt; 9) {
             point.next = new ListNode(sum%10);
             append = 1;
@@ -154,7 +160,7 @@ var addTwoNumbers = function(l1, l2) {
         
     <h1>Categories</h1>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/">javaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/设计模式/">设计模式</a></li></ul></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/">javaScript</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/LeetCode/">LeetCode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javaScript/设计模式/">设计模式</a></li></ul></li></ul>
 
       </section>
       <section class="aside-section">
