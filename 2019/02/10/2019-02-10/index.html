@@ -112,30 +112,23 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2020/05/07/2020-05-07/">
-                            Vue 项目性能优化
-                        </a>
-                    </h1>
-                    <ul class="post-date">
-                        <li>
-                            May 7, 2020
-                        </li>
-                    </ul>
-                    
-                    <!-- <div class="post-content ">
-                        
-                            <a href="/2020/05/07/2020-05-07/" class="more-link">Continue reading</a>
-                    </div> -->
-        </article>
-        
-</section>
+    
+    
+    <h2 class="post-title">
+        LeetCode - 找出数组中3个能够组成给定值的所有组合
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-02-10
+        </li>
+    </ul>
+    <div class="post-content">
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 找出数组中3个能够组成给定值的所有组合</span><br><span class="line">* </span><br><span class="line">* @param &#123; array &#125; arr - 数字集合</span><br><span class="line">* @return &#123; number &#125; n - 给定值</span><br><span class="line">*&#x2F;</span><br><span class="line">var threeSum &#x3D; function(arr, n) &#123;</span><br><span class="line">  arr.sort( (a, b) &#x3D;&gt; a - b );</span><br><span class="line">  let res &#x3D; [];</span><br><span class="line">  for (let i &#x3D; 0; i &lt; arr.length; i++ ) &#123; </span><br><span class="line">    if (i &amp;&amp; arr[i] &#x3D;&#x3D;&#x3D; arr[i - 1]) continue;</span><br><span class="line">    let [ target, start, end ] &#x3D; [ n-arr[i], i+1, arr.length-1 ];</span><br><span class="line">    while (start &lt; end) &#123;</span><br><span class="line">        let sum &#x3D; arr[start] + arr[end];</span><br><span class="line">        if (sum &gt; target) &#123; </span><br><span class="line">          end--</span><br><span class="line">        &#125; else if (sum &lt; target) &#123;  </span><br><span class="line">          start++</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          res.push( [ arr[i], arr[start], arr[end] ] );</span><br><span class="line">          while (arr[start] &#x3D;&#x3D;&#x3D; arr[start + 1]) &#123;</span><br><span class="line">            start++</span><br><span class="line">          &#125;</span><br><span class="line">          start++</span><br><span class="line">          while (arr[end] &#x3D;&#x3D;&#x3D; arr[end - 1]) &#123;</span><br><span class="line">            end--</span><br><span class="line">          &#125;</span><br><span class="line">          end--</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+    </div>
+</article>
         </main>
         <aside class="aside">
             

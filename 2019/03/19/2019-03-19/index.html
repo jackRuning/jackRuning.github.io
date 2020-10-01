@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="keywords" content="Jack, JavaScript" />
+    <title>
+        Jack
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
+     
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
+
+    <script>
+        infiniteScroll()
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const [
+                mainTitle,
+                mobileMenu,
+                mobileMainTitle,
+                mobileMenuBtn,
+                ipadMenuBtn,
+                aside,
+                closeBtn,
+            ] = getEle(
+                '#main-title',
+                '.mobile-menu',
+                '.mobile-menu h3',
+                '.mobile-menu button',
+                '.ipad-menu',
+                'aside',
+                'aside .close',
+            )
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].intersectionRatio <= 0) {
+                    mobileMainTitle.classList.remove('invisibile')
+                } else {
+                    mobileMainTitle.classList.add('invisibile')
+                }
+            })
+            io.observe(mainTitle)
+
+            clickToggleAside(mobileMenuBtn)
+            clickToggleAside(ipadMenuBtn)
+            clickToggleAside(closeBtn, false)
+
+            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
+            if (isMenuVisible) document.body.style.background = 'none'
+
+            function getEle(...args) {
+                return args.map(arg => document.querySelector(arg))
+            }
+
+            function clickToggleAside(btn, show = true) {
+                btn.addEventListener('click', function () {
+                    if (show) {
+                        aside.style.display = 'block'
+                    } else {
+                        aside.style.display = 'none'
+                    }
+                })
+            }
+        })
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+    <div class="container">
+        <header class="header">
+    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <h3 class="invisibile">
+            <a href="/" class="logo">
+                Jack
+            </a>
+        </h3>
+        <button class="menu">menu</button>
+    </nav>
+
+    <button class="ipad-menu menu">menu</button>
+
+    <h1 class="title" id="main-title">
+        <a href="/" class="logo">
+            Jack
+        </a>
+    </h1>
+    <h2 class="desc">
+        
+    </h2>
+
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/jackRuning">
+                    Github
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</header>
+        <main class="main">
+            <article class="post">
+    
+    
+    
+    <h2 class="post-title">
+        JavaScript - 选择排序的思考
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-03-19
+        </li>
+    </ul>
+    <div class="post-content">
+        <p><strong>原始思路</strong></p>
+<p>第一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，然后再从剩余的未排序元素中寻找到最小（大）元素，然后放到已排序的序列的末尾。以此类推，直到全部待排序的数据元素的个数为零。选择排序是不稳定的排序方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建一个包含 100 个 1 - 100 整数的数组</span><br><span class="line">let testArr &#x3D; []</span><br><span class="line">for (let i &#x3D; 0; i&lt;100; i++) &#123;</span><br><span class="line">  testArr.push(Math.floor(Math.random() * 100))</span><br><span class="line">&#125;</span><br><span class="line">console.log(testArr)</span><br><span class="line">console.log(&quot;\n&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 原始的实现思路</span><br><span class="line">(function sort (arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  for (let i &#x3D; 0; i &lt; arr.length - 1; i++) &#123;</span><br><span class="line">    for (let j &#x3D; i + 1; j &lt; arr.length; j++) &#123;</span><br><span class="line">      if (arr[j] &lt; arr[i]) [arr[i], arr[j]] &#x3D; [arr[j], arr[i]]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(arr)</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
+
+<p><strong>改写方案1</strong></p>
+<p>在每一次的循环过程中，确定数组中的最大值和最小值，减少下一次内循环中的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(function sort (arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  let min &#x3D; 0, max &#x3D; arr.length - 1</span><br><span class="line">  while (min &lt;&#x3D; max) &#123;</span><br><span class="line">    for (let i &#x3D; min; i&lt; max + 1; i++) &#123;</span><br><span class="line">      if(arr[i] &gt; arr[max]) [arr[i], arr[max]] &#x3D; [arr[max], arr[i]]</span><br><span class="line">      if(arr[i] &lt; arr[min]) [arr[i], arr[min]] &#x3D; [arr[min], arr[i]]</span><br><span class="line">    &#125;</span><br><span class="line">    min++</span><br><span class="line">    max--</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(arr)</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
+
+<p><strong>改写方案2</strong></p>
+<p>记录当前循环遍历过程中是否发生了交换行为，如果没有发生交换，意味着整个数组已经排序好</p>
+<ul>
+<li>优点：当数组中只存在较少（极少）逆向排序的数值时，能够极大减少运行时间</li>
+<li>缺点：当数组逆向排序的数值越多，不适用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(function sort (arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  let min &#x3D; 0, max &#x3D; arr.length - 1</span><br><span class="line">  &#x2F;&#x2F; 判断是否发生交换行为</span><br><span class="line">  let bool</span><br><span class="line">  while (min &lt;&#x3D; max) &#123;</span><br><span class="line">    bool &#x3D; false</span><br><span class="line">    for (let i &#x3D; min; i&lt; max + 1; i++) &#123;</span><br><span class="line">      if (arr[i] &gt; arr[max]) &#123;</span><br><span class="line">        [arr[i], arr[max]] &#x3D; [arr[max], arr[i]]</span><br><span class="line">        bool &#x3D; true;</span><br><span class="line">      &#125;</span><br><span class="line">      if (arr[i] &lt; arr[min]) &#123;</span><br><span class="line">        [arr[i], arr[min]] &#x3D; [arr[min], arr[i]]</span><br><span class="line">        bool &#x3D; true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    min++</span><br><span class="line">    max--</span><br><span class="line">    if(!bool) break</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(arr)</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+        </main>
+        <aside class="aside">
+            
+            <div class="close"></div>
+            <!-- <section class="aside-section">
+                
+    <h1>Categories</h1>
+
+    
+
+            </section> -->
+            <section class="aside-section">
+                
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a></li></ul>
+
+
+            </section>
+            <section class="aside-section">
+                
+    <h1>Tags</h1>
+
+    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+            </section>
+        </aside>
+    </div>
+</body>
+
+</html>

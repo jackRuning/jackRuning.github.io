@@ -112,30 +112,28 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2020/05/07/2020-05-07/">
-                            Vue 项目性能优化
-                        </a>
-                    </h1>
-                    <ul class="post-date">
-                        <li>
-                            May 7, 2020
-                        </li>
-                    </ul>
-                    
-                    <!-- <div class="post-content ">
-                        
-                            <a href="/2020/05/07/2020-05-07/" class="more-link">Continue reading</a>
-                    </div> -->
-        </article>
-        
-</section>
+    
+    
+    <h2 class="post-title">
+        JavaScript - 插入排序的思考
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-03-15
+        </li>
+    </ul>
+    <div class="post-content">
+        <p><strong>原始思路</strong></p>
+<p>基本思想是将一个记录插入到已经排好序的有序表中，从而一个新的、记录数增1的有序表。在其实现过程使用双层循环，外层循环对除了第一个元素之外的所有元素，内层循环对当前元素前面有序表进行待插入位置查找，并进行移动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建一个包含 100 个 1 - 100 整数的数组</span><br><span class="line">let testArr &#x3D; []</span><br><span class="line">for(let i &#x3D; 0; i&lt;100; i++)&#123;</span><br><span class="line">  testArr.push(Math.floor(Math.random() * 100))</span><br><span class="line">&#125;</span><br><span class="line">console.log(testArr)</span><br><span class="line">console.log(&quot;\n&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 原始的实现思路</span><br><span class="line">(function sort(arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  for(let i &#x3D; 1; i &lt; arr.length; i++)&#123;</span><br><span class="line">    for(let j &#x3D; i; j &gt; 0; j--)&#123;</span><br><span class="line">      if(arr[j] &lt; arr[j-1]) [arr[j], arr[j-1]] &#x3D; [arr[j-1], arr[j]]</span><br><span class="line">    &#125;    </span><br><span class="line">  &#125;</span><br><span class="line">  console.log(arr)</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
 
+<p><strong>改写方案: 二分插入排序</strong></p>
+<p>优点：稳定，最好：log2n, 最坏o(n^2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(function sort(arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  for (let i &#x3D; 1; i &lt; arr.length; i++) &#123; </span><br><span class="line">    let index &#x3D; arr[i], left &#x3D; 0, right &#x3D; i-1</span><br><span class="line">    while (left &lt;&#x3D; right) &#123; </span><br><span class="line">      let pivot &#x3D; Math.floor((left+right)&#x2F;2)</span><br><span class="line">      index &lt; arr[pivot] ?  right &#x3D; pivot-1 : left &#x3D; pivot+1</span><br><span class="line">    &#125; </span><br><span class="line">    for (let j &#x3D; i-1; j &gt;&#x3D; left; j--) arr[j+1] &#x3D; arr[j]</span><br><span class="line">    arr[left] &#x3D; index</span><br><span class="line">  &#125; </span><br><span class="line">  console.log(arr)</span><br><span class="line">  </span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
         </main>
         <aside class="aside">
             

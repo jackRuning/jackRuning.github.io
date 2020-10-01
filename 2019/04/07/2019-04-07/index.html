@@ -112,30 +112,29 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2020/05/07/2020-05-07/">
-                            Vue 项目性能优化
-                        </a>
-                    </h1>
-                    <ul class="post-date">
-                        <li>
-                            May 7, 2020
-                        </li>
-                    </ul>
-                    
-                    <!-- <div class="post-content ">
-                        
-                            <a href="/2020/05/07/2020-05-07/" class="more-link">Continue reading</a>
-                    </div> -->
-        </article>
-        
-</section>
+    
+    
+    <h2 class="post-title">
+        JavaScript - 高阶函数：记忆（memorization）
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-04-07
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>在函数式编程当中，定义一个阶乘函数，可以将上次的计算结果缓存起来，这种缓存技叫作记忆（memorization）。需要注意的是，记忆只是一种编程技巧，其本质是牺牲算法的空间复杂度以换取更优的时间复杂度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function memorize(f) &#123;</span><br><span class="line">  let cache &#x3D; &#123;&#125;; &#x2F;&#x2F; 将值保存在闭包内</span><br><span class="line">  return function() &#123;</span><br><span class="line">    &#x2F;&#x2F; 将实参转换为字符串形式，并将其用做缓存的键</span><br><span class="line">    let key &#x3D; arguments.length + Array.prototype.join.call(arguments, &quot;,&quot;);</span><br><span class="line">    return (key in cache) ? cache[key] : cache[key] &#x3D; f.apply(this, arguments);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>memorize() 函数创建一个新的对象，这个对象被当作缓存（的宿主）赋值给一个局部变量，因此，对于返回的函数来说它是私有的（在闭包中）。所返回的函数将它的实参数组转换成为字符串，并将字符串作为缓存对象的属性名。如果在缓存对象中存在这个值，则直接返回；否则，就调用既定的函数对实参进行计算，并将计算的结果缓存起来并返回。</p>
+<p><strong>使用案例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let factorial &#x3D; memorize( n &#x3D;&gt; &#123;</span><br><span class="line">  return (n &lt;&#x3D; 1) ? 1 : n * factorial(n-1);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">factorial(5); &#x2F;&#x2F; 120，对于 4 ~ 1 的值也有缓存</span><br></pre></td></tr></table></figure>
 
+<p>当我们写一个递归函数时，往往需要实现记忆功能，我们更希望调用实现记忆功能的递归函数，而不是原递归函数本身。</p>
+
+    </div>
+</article>
         </main>
         <aside class="aside">
             

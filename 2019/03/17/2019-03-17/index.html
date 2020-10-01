@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="keywords" content="Jack, JavaScript" />
+    <title>
+        Jack
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/favicon.ico" />
+     
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css" />
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/frontendsophie/hexo-infinite-scroll@2.0.0/dist/main.js"></script>
+
+    <script>
+        infiniteScroll()
+
+        window.addEventListener('DOMContentLoaded', function () {
+            const [
+                mainTitle,
+                mobileMenu,
+                mobileMainTitle,
+                mobileMenuBtn,
+                ipadMenuBtn,
+                aside,
+                closeBtn,
+            ] = getEle(
+                '#main-title',
+                '.mobile-menu',
+                '.mobile-menu h3',
+                '.mobile-menu button',
+                '.ipad-menu',
+                'aside',
+                'aside .close',
+            )
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].intersectionRatio <= 0) {
+                    mobileMainTitle.classList.remove('invisibile')
+                } else {
+                    mobileMainTitle.classList.add('invisibile')
+                }
+            })
+            io.observe(mainTitle)
+
+            clickToggleAside(mobileMenuBtn)
+            clickToggleAside(ipadMenuBtn)
+            clickToggleAside(closeBtn, false)
+
+            const isMenuVisible = window.getComputedStyle(mobileMenu).display !== 'none'
+            if (isMenuVisible) document.body.style.background = 'none'
+
+            function getEle(...args) {
+                return args.map(arg => document.querySelector(arg))
+            }
+
+            function clickToggleAside(btn, show = true) {
+                btn.addEventListener('click', function () {
+                    if (show) {
+                        aside.style.display = 'block'
+                    } else {
+                        aside.style.display = 'none'
+                    }
+                })
+            }
+        })
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+    <div class="container">
+        <header class="header">
+    <nav class="mobile-menu" style="background: url(https://cdn.jsdelivr.net/gh/frontendsophie/hexo-theme-autumn@1.0.0/source/img/button-bg.png) #f3f3f3">
+        <h3 class="invisibile">
+            <a href="/" class="logo">
+                Jack
+            </a>
+        </h3>
+        <button class="menu">menu</button>
+    </nav>
+
+    <button class="ipad-menu menu">menu</button>
+
+    <h1 class="title" id="main-title">
+        <a href="/" class="logo">
+            Jack
+        </a>
+    </h1>
+    <h2 class="desc">
+        
+    </h2>
+
+    <div class="links">
+        <ul>
+            
+            <li>
+                <a target="_blank" rel="noopener" href="https://github.com/jackRuning">
+                    Github
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</header>
+        <main class="main">
+            <article class="post">
+    
+    
+    
+    <h2 class="post-title">
+        JavaScript - 快速排序的思考
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-03-17
+        </li>
+    </ul>
+    <div class="post-content">
+        <p><strong>原始思路</strong></p>
+<ul>
+<li>1．先从数列中取出一个数作为基准数。</li>
+<li>2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。</li>
+<li>3．再对左右区间重复第二步，直到各区间只有一个数。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建一个包含 100 个 1 - 100 整数的数组</span><br><span class="line">let testArr &#x3D; []</span><br><span class="line">for (let i &#x3D; 0; i&lt;100; i++) &#123;</span><br><span class="line">  testArr.push(Math.floor(Math.random() * 100))</span><br><span class="line">&#125;</span><br><span class="line">console.log(testArr)</span><br><span class="line">console.log(&quot;\n&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 原始的实现思路：递归</span><br><span class="line">(function sort (arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  function quick (arr, i, j) &#123;</span><br><span class="line">    if (i &lt; j) &#123;</span><br><span class="line">      &#x2F;&#x2F; 固定第一个为基准点</span><br><span class="line">      let left &#x3D; i, right &#x3D; j, pivot &#x3D; arr[left]</span><br><span class="line">      while (i &lt; j) &#123;</span><br><span class="line">        while(arr[j] &gt;&#x3D; pivot &amp;&amp; i &lt; j) j--</span><br><span class="line">        if(i &lt; j) arr[i++] &#x3D; arr[j]</span><br><span class="line">        while(arr[i] &lt;&#x3D; pivot &amp;&amp; i &lt; j) i++</span><br><span class="line">        if(i &lt; j) arr[j--] &#x3D; arr[i</span><br><span class="line">      &#125;</span><br><span class="line">      arr[i] &#x3D; pivot;</span><br><span class="line">      quick(arr, left, i-1)</span><br><span class="line">      quick(arr, i+1, right</span><br><span class="line">      return arr</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  quick(arr, 0, arr.length - 1)</span><br><span class="line">  console.log(arr)</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 原始的实现思路：非递归</span><br><span class="line">(function sort (arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  function quick (num, left, right) &#123;</span><br><span class="line">    let list &#x3D; [[left, right]]</span><br><span class="line">    while (list.length &gt; 0) &#123; </span><br><span class="line">        let now &#x3D; list.pop()</span><br><span class="line">        if (now[0] &gt;&#x3D; now[1]) continue</span><br><span class="line">        &#x2F;&#x2F; 固定第一个为基准点</span><br><span class="line">        let i &#x3D; now[0], j &#x3D; now[1], pivot &#x3D; now[0]</span><br><span class="line">        while (i &lt; j) &#123;</span><br><span class="line">            while (num[j] &gt;&#x3D; num[pivot] &amp;&amp; j &gt; pivot) j--</span><br><span class="line">            if (i &gt;&#x3D; j) break</span><br><span class="line">            while (num[i] &lt;&#x3D; num[pivot] &amp;&amp; i &lt; j) i++</span><br><span class="line">            [num[pivot], num[j], num[i], pivot] &#x3D; [num[j], num[i], num[pivot], i]</span><br><span class="line">        &#125;</span><br><span class="line">        list.push([now[0], pivot - 1])</span><br><span class="line">        list.push([pivot + 1, now[1]])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  quick(arr, 0, arr.length - 1)</span><br><span class="line">  console.log(arr)</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
+
+<p><strong>改写方案: 简洁的写法，选取数组的第一个数为基准</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(function sort(arr) &#123;</span><br><span class="line">  console.time(&#39;时间&#39;)</span><br><span class="line"></span><br><span class="line">  let quick &#x3D; arr &#x3D;&gt; arr.length &lt;&#x3D; 1 ? arr :</span><br><span class="line">    quick(arr.filter(x &#x3D;&gt; x &lt; arr[0]))</span><br><span class="line">    .concat(arr.filter(x &#x3D;&gt; x &#x3D;&#x3D; arr[0]))</span><br><span class="line">    .concat(quick(arr.filter(x &#x3D;&gt; x &gt; arr[0])))</span><br><span class="line">  console.log(quick(arr))</span><br><span class="line"></span><br><span class="line">  console.timeEnd(&#39;时间&#39;)</span><br><span class="line">&#125;)(testArr.slice(0))</span><br></pre></td></tr></table></figure>
+    </div>
+</article>
+        </main>
+        <aside class="aside">
+            
+            <div class="close"></div>
+            <!-- <section class="aside-section">
+                
+    <h1>Categories</h1>
+
+    
+
+            </section> -->
+            <section class="aside-section">
+                
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/">2019</a></li></ul>
+
+
+            </section>
+            <section class="aside-section">
+                
+    <h1>Tags</h1>
+
+    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+
+            </section>
+        </aside>
+    </div>
+</body>
+
+</html>

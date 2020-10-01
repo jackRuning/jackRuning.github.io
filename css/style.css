@@ -26,6 +26,9 @@ code {
 }
 .header {
   text-align: center;
+  width: 20%;
+  position: fixed;
+  right: 50px;
 }
 .header h1,
 .header h2 {
@@ -37,9 +40,6 @@ code {
   text-decoration: none;
   font: 700 3rem Lora-Bold;
   transition: 0.3s;
-}
-.header .title a:hover {
-  color: #bbb;
 }
 .header .desc {
   margin: 0.5em 0 0.25em;
@@ -153,8 +153,8 @@ code {
   position: relative;
   text-align: center;
   border-bottom: 1px dashed #ddd;
-  margin: 0 0 4.5em;
-  padding: 0 0 3em;
+  margin: 0 0 2.5em;
+  padding: 0 0 2em;
 }
 .post::after {
   content: '';
@@ -192,7 +192,7 @@ code {
 }
 .post .post-title {
   margin: 0 0 0.5em;
-  font: 1.953em Lora;
+  font: 1.5em Lora;
   color: #777;
 }
 .post .post-title::after {
@@ -216,10 +216,6 @@ code {
 .post .post-date li {
   display: inline-block;
 }
-.post .post-date li:first-child::after {
-  content: "\00B7";
-  margin: 0 0.75em;
-}
 .post .post-cover {
   position: relative;
   user-select: none;
@@ -240,7 +236,7 @@ code {
 }
 .post .post-content {
   position: relative;
-  color: #777;
+  color: #666;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1.5em;
@@ -267,10 +263,32 @@ code {
   max-width: 100%;
   border-radius: 4px;
 }
+.post .post-content .plain {
+  width: 100%;
+  margin: 0;
+}
+.post .post-content .plain table {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.post .post-content .plain table .gutter {
+  width: 30px;
+}
+.post .post-content .plain table .gutter pre {
+  padding: 0 5px;
+  margin: 0;
+  border: none;
+}
+.post .post-content .plain table .code pre {
+  padding: 0 10px;
+  border: none;
+  border-left: 1px dashed #ddd;
+}
 .aside {
   overflow: hidden;
-  width: 25%;
-  float: right;
+  width: 20%;
+  position: fixed;
+  right: 50px;
 }
 .close {
   display: none;
@@ -303,9 +321,9 @@ code {
   margin: 0 0 3em;
 }
 .aside-section h1 {
-  font: 1.25em/1.2 Lora;
+  font: 1.25em/0.8 Lora;
   margin: 0.67em 0;
-  color: #777;
+  color: #666;
 }
 .aside-section h1:before {
   content: '';
@@ -334,16 +352,12 @@ code {
   font: 14px Lato;
   transition: 0.3s;
 }
-.aside-section ul li a:hover {
-  color: #ddd;
-}
 .aside-section.tag li {
   display: inline-block;
   border: none;
   margin: 0 10px 0 0;
 }
 .aside-section.tag li a {
-  border: 1px dashed #ddd;
   padding: 4px;
 }
 @media screen and (max-width: 1015px) {
@@ -393,6 +407,7 @@ body {
   overflow: hidden;
 }
 .container .main {
+  padding: 50px 0;
   width: 70%;
   float: left;
 }

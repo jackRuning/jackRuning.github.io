@@ -112,30 +112,25 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2020/05/07/2020-05-07/">
-                            Vue 项目性能优化
-                        </a>
-                    </h1>
-                    <ul class="post-date">
-                        <li>
-                            May 7, 2020
-                        </li>
-                    </ul>
-                    
-                    <!-- <div class="post-content ">
-                        
-                            <a href="/2020/05/07/2020-05-07/" class="more-link">Continue reading</a>
-                    </div> -->
-        </article>
-        
-</section>
+    
+    
+    <h2 class="post-title">
+        JavaScript - 实现“发布者-订阅者”模式
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-02-03
+        </li>
+    </ul>
+    <div class="post-content">
+        <p>简单来说，发布订阅者模式就是一种一对多的依赖关系。多个订阅者（一般是注册的函数）同时监听同一个数据对象，当这个数据对象发生变化的时候会执行一个发布事件，通过这个发布事件会通知到所有的订阅者，使它们能够自己改变对数据对象依赖的部分状态。</p>
+<p>下面实现一个简单的“发布者 - 订阅者”模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 实现发布者</span><br><span class="line">function Publisher() &#123;</span><br><span class="line">    &#x2F;&#x2F; 存放所有的订阅者</span><br><span class="line">    this.subscribers &#x3D; [];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 添加订阅者，且仅订阅1次</span><br><span class="line">    this.addSubscriber &#x3D; function(subscriber) &#123;</span><br><span class="line">        let isExist &#x3D; this.subscribers.some(item &#x3D; item &#x3D;&#x3D; subscriber);</span><br><span class="line">        if (!isExist) &#123;</span><br><span class="line">            this.subscribers.push(subscriber);</span><br><span class="line">        &#125;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 发布消息</span><br><span class="line">    this.deliver &#x3D; function(data) &#123;</span><br><span class="line">        this.subscribers.forEach(fn &#x3D; fn(data));</span><br><span class="line">        return this;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 构建订阅者</span><br><span class="line">let subscriberA &#x3D; function(data) &#123;</span><br><span class="line">    console.log(&#96;我是订阅者A, data $&#123;data&#125;&#96;);</span><br><span class="line">&#125;;</span><br><span class="line">let subscriberB &#x3D; function(data) &#123;</span><br><span class="line">    console.log(&#96;我是订阅者B, data $&#123;data&#125;&#96;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">let publisher &#x3D; new Publisher();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 添加订阅者</span><br><span class="line">publisher.addSubscriber(subscriberA).addSubscriber(subscriberB);</span><br><span class="line"></span><br><span class="line">publisher.deliver(发布一条信息);</span><br></pre></td></tr></table></figure>
 
+    </div>
+</article>
         </main>
         <aside class="aside">
             
