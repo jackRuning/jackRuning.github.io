@@ -29,6 +29,7 @@ code {
   width: 20%;
   position: fixed;
   right: 50px;
+  top: 50px;
 }
 .header h1,
 .header h2 {
@@ -153,8 +154,8 @@ code {
   position: relative;
   text-align: center;
   border-bottom: 1px dashed #ddd;
-  margin: 0 0 2.5em;
-  padding: 0 0 2em;
+  margin: 0 0 3.5em;
+  padding: 0 0 3em;
 }
 .post::after {
   content: '';
@@ -289,6 +290,7 @@ code {
   width: 20%;
   position: fixed;
   right: 50px;
+  top: 300px;
 }
 .close {
   display: none;
@@ -404,12 +406,12 @@ body {
   padding: 20px;
   background: #fff;
   margin: 20px;
-  overflow: hidden;
+  display: flex;
+  min-height: 95vh;
 }
 .container .main {
   padding: 50px 0;
   width: 70%;
-  float: left;
 }
 .invisibile {
   visibility: hidden;
