@@ -1,0 +1,16 @@
+#app {
+  position: relative;
+}
+
+.user {
+  padding: 0;
+}
+
+.user img{
+  width: 1rem;
+}
+
+.demo div {
+  font-size: 0.3rem;
+  color: #424347;
+}

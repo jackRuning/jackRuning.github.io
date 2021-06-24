@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./image/favicon.ico" />
+    <title>个人主页</title>
+    <link rel="stylesheet" href="./style/global.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div id="app" @touchmove.prevent>
+      <!-- <div class="welcome"></div> -->
+      <div class="user">
+        <img class="ani-UpIn" src="./image/favicon.ico" />
+        <div id="introText" class="ani-text demo">Jack sdfasd sad </div>
+      </div>
+
+      <div id="introText1" class="ani-text">Our Work</div>
+
+    </div>
+
+    <script src="./script/vue.min.js"></script>
+    <script src="./script/anime.js"></script>
+    <script src="./script/util.js"></script>
+    <script src="./script/index.js"></script>
+  </body>
 </html>
