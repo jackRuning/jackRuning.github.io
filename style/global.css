@@ -48,6 +48,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   font-size: 0.16rem;
+  color: #222838;
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 }
 
 .fixed-container {
@@ -61,6 +68,7 @@ html {
 
 .flex-center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -102,6 +110,40 @@ body {
 .ani-text div {
   min-width: 0.08rem;
 }
+
+.arrow_down {
+  position: absolute;
+  width: 0.2rem;
+  height: 0.16rem;
+  bottom: 0.2rem;
+  opacity: 0.4;
+  animation: jumpUp 3s infinite;
+}
+
+.title-line {
+  width: 1.5rem;
+  height: 0.02rem;
+  position: relative;
+  background-color: #aaa;
+  border-radius: 0.02rem;
+  margin: 0.1rem 0;
+}
+
+.title-line::before {
+  content: '';
+  position: absolute;
+  left: 5%;
+  transform: translateX(-50%);
+  width: 0.06rem;
+  height: 0.06rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: #aaa 0.02rem solid;
+  bottom: -0.04rem;
+  z-index: 2;
+  animation: swing 8s infinite cubic-bezier(0.77, 0.23, 0.24, 0.77);
+}
+
 /*
  * 动画样式
  */
@@ -165,5 +207,35 @@ body {
   to {
     opacity: 1;
     transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes jumpUp {
+  0% {
+    transform: translateY(0);
+  } 
+  40% {
+    transform: translateY(-60%);
+  }
+  50% {
+    transform: translateY(-30%);
+  }
+  60% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes swing {
+  0% {
+    left: 5%;
+  }
+  50% {
+    left: 95%;
+  }
+  100% {
+    left: 5%;
   }
 }

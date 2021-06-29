@@ -2,15 +2,71 @@
   position: relative;
 }
 
-.user {
-  padding: 0;
+.user .user-avater {
+  position: relative;
+  transform: translateY(-5%);
+  height: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  border: rgba(0, 0, 0, 0.1) 0.06rem solid;
 }
 
-.user img{
-  width: 1rem;
+.user .user-head {
+  position: absolute;
+  width: 0.8rem;
+  margin-top: -0.5rem;
+  margin-left: -0.8rem;
+  transform: rotate(0deg);
+  transform-origin: center bottom;
+  animation: headAni 5s infinite;
 }
 
-.demo div {
-  font-size: 0.3rem;
-  color: #424347;
+@keyframes headAni {
+  0% {
+    transform: rotate(-8deg);
+  }
+  35% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  65% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(-8deg);
+  }
+}
+
+.user .user-body {
+  width: 0.86rem;
+  margin-left: 0.11rem;
+  margin-top: 0.49rem;
+  border-radius: 80%;
+}
+
+.user .name {
+  height: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.user .name div {
+  font-size: 0.18rem;
+}
+
+.user .intro {
+  height: 0.35rem;
+  margin: 0.1rem 0.2rem;
+}
+
+.user .intro div {
+  color: #666;
+  font-size: 0.12rem;
+}
+
+.overview .title div {
+  font-size: 0.28rem;
 }
