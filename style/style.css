@@ -1,23 +1,41 @@
+body {
+  min-width: 1300px;
+  min-height: 820px;
+  height: 100vh;
+  background-color: #ebeff2;
+}
+
 #app {
   position: relative;
+  width: 1280px;
+  height: 800px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0px 8px 0 rgb(0 0 0 / 6%), 0 1px 0px 0 rgb(0 0 0 / 2%);
+}
+
+.user {
+  width: 200px;
+  height: 180px;
 }
 
 .user .user-avater {
   position: relative;
   transform: translateY(-5%);
-  height: 1.2rem;
-  width: 1.2rem;
-  height: 1.2rem;
+  height: 100px;
+  width: 100px;
+  height: 100px;
   background-color: #fff;
   border-radius: 50%;
-  border: rgba(0, 0, 0, 0.1) 0.06rem solid;
+  border: #ebeff2 6px solid;
 }
 
 .user .user-head {
   position: absolute;
-  width: 0.8rem;
-  margin-top: -0.5rem;
-  margin-left: -0.8rem;
+  width: 60px;
+  margin-top: -33px;
+  margin-left: -62px;
   transform: rotate(0deg);
   transform-origin: center bottom;
   animation: headAni 5s infinite;
@@ -42,31 +60,72 @@
 }
 
 .user .user-body {
-  width: 0.86rem;
-  margin-left: 0.11rem;
-  margin-top: 0.49rem;
+  width: 70px;
+  margin-left: 9px;
+  margin-top: 41px;
   border-radius: 80%;
 }
 
-.user .name {
-  height: 0.35rem;
-  margin-top: 0.2rem;
+
+.summary_item h2 {
+  color: #888;
+  text-align: center;
 }
 
-.user .name div {
-  font-size: 0.18rem;
+.process_container {
+  width: 1200px;
+  margin: 30px;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
 }
 
-.user .intro {
-  height: 0.35rem;
-  margin: 0.1rem 0.2rem;
+.process_container .bg_bar {
+  width: 1200px;
+  height: 7px;
+  border-bottom: #ebeff2 4px dashed;
 }
 
-.user .intro div {
+.process_container .target_points {
+  width: 1200px;
+  position: absolute;
+  top: 0;
+}
+
+.process_container .target_points .point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ebeff2;
+}
+
+.plan_container {
+  width: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: #ebeff2 4px dashed;
+  position: relative;
+}
+
+.table_head {
+  background-color: #fff;
+  height: 50px;
+}
+
+.plan_list {
+  height: 320px;
+  margin: 0 10px;
+  overflow-y: scroll;
+}
+
+.plan_list > div .item {
+  height: 40px;
+  margin-top: 5px;
   color: #666;
-  font-size: 0.12rem;
 }
 
-.overview .title div {
-  font-size: 0.28rem;
+.plan_list > div .item img {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
 }

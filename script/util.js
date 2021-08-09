@@ -1,40 +1,30 @@
-function showTextAni(domID, type) {
-  const el = document.getElementById(domID);
-  const textList = el.innerHTML.split("");
-  el.innerHTML = "";
-  el.style.opacity = 1;
-  if (type == 1) {
-    el.style.overflow = "hidden";
+
+function formatNum(n) {
+  if (n < 1000) {
+    return Math.floor(n);
+  } else {
+    const str = String(Math.floor(n)).split("").reverse();
+    const res = [];
+    for (let i = 0; i < str.length; i++) {
+      res.push(str[i]);
+      if ((i + 1) % 3 == 0 && (i + 1) != str.length) res.push(",");
+    }
+    return res.reverse().join("");
   }
-  textList.forEach((element) => {
-    const text = document.createElement("div");
-    text.style.opacity = 0;
-    text.innerText = element;
-    el.appendChild(text);
-  });
-  anime({
-    targets: `#${domID} div`,
-    easing: "easeOutSine",
-    opacity: 1,
-    ...textAniType(type)
-  });
 }
 
-function textAniType (type) {
-  return [
-    {
-      duration: 1500,
-      delay: (el, index) => index * 80,
-    },
-    {
-      duration: 600,
-      delay: (el, index) => index * 10,
-      translateY: [50, 0],
-    },
-    {
-      duration: 150,
-      delay: (el, index) => index * 150,
-      translateY: [-100, 0]
-    }
-  ][type];
+function getNowFormatDate() {
+  var date = new Date();
+  var seperator1 = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var strDate = date.getDate();
+  if (month >= 1 && month <= 9) {
+      month = "0" + month;
+  }
+  if (strDate >= 0 && strDate <= 9) {
+      strDate = "0" + strDate;
+  }
+  var currentdate = year + seperator1 + month + seperator1 + strDate;
+  return currentdate;
 }

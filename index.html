@@ -9,39 +9,73 @@
     />
     <link rel="icon" href="./image/favicon.ico" />
     <title>个人主页</title>
+    <link rel="stylesheet" href="./style/theme-chalk.css">
+    <link rel="stylesheet" href="./style/css3_loader.css">
     <link rel="stylesheet" href="./style/global.css" />
     <link rel="stylesheet" href="./style/style.css" />
   </head>
-  <body>
+  <body class="flex-center">
     <div id="app">
-      <!-- 首页 -->
-      <div class="box flex-center user ani-fadeIn">
-        <div class="user-avater">
-          <img class="user-body" src="./image/user_body.png" />
-          <img class="user-head" src="./image/user_head.png" />
+      
+      <div class="flex-between" style="padding-top: 20px;">
+        <!-- 头像 -->
+        <!-- <div class="flex-center user ani-fadeIn">
+          <div class="user-avater">
+            <img class="user-body" src="./image/user_body.png" />
+            <img class="user-head" src="./image/user_head.png" />
+          </div>
+        </div> -->
+        <!--  -->
+        <div>
+          <div class="summary_item">
+            <h2>文字特效</h2>
+            <div class="title-line"></div>
+          </div>
         </div>
-
-        <div id="userName" class="ani-text name">汪宁</div>
-        <div id="userIntro" class="ani-text intro">这里是简单的自我介绍,这里是简单的自我介绍,这里是简单的自我介绍</div>
-
-        <img v-if="boxIndex.length == 0" class="arrow_down" src="./image/icon_arrow_down.png">
       </div>
 
-      <div class="box flex-center overview">
-        <div id="overviewTitle" class="ani-text title">技能介绍</div>
-        <div v-if="boxIndex.includes(1)" class="title-line"></div>
+      <!-- 进度条 -->
+      <div class="process_container">
+        <div class="bg_bar"></div>
+        <div class="flex-between target_points">
+          <div class="point"></div>
+          <div class="point"></div>
+          <div class="point"></div>
+          <div class="point"></div>
+          <div class="point"></div>
+          <div class="point"></div>
+        </div>
       </div>
 
-      <div class="box flex-center structure">
-        <div id="structureTitle" class="ani-text title">项目介绍</div>
-        <div v-if="boxIndex.includes(2)" class="title-line"></div>
+      <div class="flex-between" style="margin: 30px;">
+        <!--  -->
+        <!-- <div style="border: #ebeff2 1px solid; width: 800px; height: 382px;"></div> -->
+        <!--  -->
+        <!-- <div class="plan_container">
+          <div class="flex-between table_head">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div class="plan_list">
+            <div id="plan_item_box">
+              <div v-for="item in PLANDATA" class="flex-between item">
+                <div>{{item.time}}</div>
+                <div>{{item.tar}}</div>
+                <div>{{item.cur}}</div>
+              </div>
+            </div>
+          </div>
+        </div> -->
       </div>
     </div>
 
     <script src="./script/vue.min.js"></script>
+    <script src="./script/element.js"></script>
     <script src="./script/anime.js"></script>
     <script src="./script/echarts.min.js"></script>
     <script src="./script/util.js"></script>
+    <script src="./script/plan.js"></script>
     <script src="./script/index.js"></script>
   </body>
 </html>
