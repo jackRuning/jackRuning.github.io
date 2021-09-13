@@ -1,41 +1,41 @@
 body {
-  min-width: 1300px;
-  min-height: 820px;
-  height: 100vh;
   background-color: #ebeff2;
 }
 
 #app {
-  position: relative;
-  width: 1280px;
-  height: 800px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 0px 8px 0 rgb(0 0 0 / 6%), 0 1px 0px 0 rgb(0 0 0 / 2%);
+  width: 100vw;
+  min-width: 320px;
+  max-width: 540px;
+  height: 100vh;
+  overflow: hidden;
 }
 
+.swiper_box {
+  width: 100%;
+  height: 100vh;
+}
+
+/*********************************** part1 */
+
 .user {
-  width: 200px;
-  height: 180px;
+  margin: 3rem auto 1rem;
+  height: 3rem;
 }
 
 .user .user-avater {
   position: relative;
-  transform: translateY(-5%);
-  height: 100px;
-  width: 100px;
-  height: 100px;
+  width: 2.8rem;
+  height: 2.8rem;
   background-color: #fff;
   border-radius: 50%;
-  border: #ebeff2 6px solid;
+  border: #ebeff2 0.06rem solid;
 }
 
 .user .user-head {
   position: absolute;
-  width: 60px;
-  margin-top: -33px;
-  margin-left: -62px;
+  width: 1.8rem;
+  bottom: 1.2rem;
+  left: 0.52rem;
   transform: rotate(0deg);
   transform-origin: center bottom;
   animation: headAni 5s infinite;
@@ -60,72 +60,17 @@ body {
 }
 
 .user .user-body {
-  width: 70px;
-  margin-left: 9px;
-  margin-top: 41px;
+  position: absolute;
+  width: 2rem;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 80%;
 }
 
 
-.summary_item h2 {
-  color: #888;
-  text-align: center;
-}
+/*********************************** part2 */
 
-.process_container {
-  width: 1200px;
-  margin: 30px;
-  height: 150px;
-  overflow: hidden;
-  position: relative;
-}
-
-.process_container .bg_bar {
-  width: 1200px;
-  height: 7px;
-  border-bottom: #ebeff2 4px dashed;
-}
-
-.process_container .target_points {
-  width: 1200px;
-  position: absolute;
-  top: 0;
-}
-
-.process_container .target_points .point {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ebeff2;
-}
-
-.plan_container {
-  width: 320px;
-  border-radius: 10px;
-  overflow: hidden;
-  border: #ebeff2 4px dashed;
-  position: relative;
-}
-
-.table_head {
-  background-color: #fff;
-  height: 50px;
-}
-
-.plan_list {
-  height: 320px;
-  margin: 0 10px;
-  overflow-y: scroll;
-}
-
-.plan_list > div .item {
-  height: 40px;
-  margin-top: 5px;
-  color: #666;
-}
-
-.plan_list > div .item img {
-  width: 20px;
-  height: 20px;
-  margin-top: 5px;
+.summary_list {
+  margin: 2rem 0;
 }

@@ -2,22 +2,31 @@ new Vue({
   el: "#app",
   data() {
     return {
+      swiper: null,
       plan_end_time: '',
-      num: 0,
-      num2: 40,
     };
   },
   mounted() {
-    anime({
-      targets: "#plan_item_box > div",
-      delay: function(el, i) { return i * 100 },
-      duration: 1000,
-      easing: "easeOutSine",
-      translateY: ["80px", "0"],
-      opacity: [ 0, 1 ]
-    });
+    this.init();
   },
   methods: {
-
+    init() {
+      const _this = this;
+      this.swiper = new Swiper('.swiper-container', {
+        speed: 800,
+        preventClicksPropagation: false,
+        height: window.screen.height,
+        direction: "vertical",
+        onInit: function(){},
+        // 切换开始时
+        onSlideChangeStart: function(swiper){
+          _this.swiperIndex = swiper.activeIndex;
+        },
+        // 切换结束时
+        onSlideChangeEnd: function(swiper) {
+          _this.hiddenIndex = swiper.activeIndex;
+        }
+      });
+    }
   },
 });

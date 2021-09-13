@@ -1,3 +1,13 @@
+(function(){
+  function initFontSize() {
+    const designWidth = 750;
+    const htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    const width = htmlWidth > 540 ? 540 : htmlWidth;
+    document.getElementsByTagName("html")[0].style.fontSize = (width / designWidth) * 100 + "px";
+  }
+  initFontSize();
+  window.addEventListener("resize", initFontSize, false);
+})()
 
 function formatNum(n) {
   if (n < 1000) {
