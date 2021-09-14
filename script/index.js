@@ -3,6 +3,7 @@ new Vue({
   data() {
     return {
       swiper: null,
+      swiperIndex: 0,
       plan_end_time: '',
     };
   },
@@ -17,16 +18,16 @@ new Vue({
         preventClicksPropagation: false,
         height: window.screen.height,
         direction: "vertical",
-        onInit: function(){},
         // 切换开始时
         onSlideChangeStart: function(swiper){
           _this.swiperIndex = swiper.activeIndex;
         },
-        // 切换结束时
-        onSlideChangeEnd: function(swiper) {
-          _this.hiddenIndex = swiper.activeIndex;
-        }
       });
+    },
+    // 加载图表
+    initEchart(el, config) {
+      const echart = echarts.init(el);
+      echart.setOption(formatEchartOption(config));
     }
   },
 });

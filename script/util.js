@@ -9,6 +9,13 @@
   window.addEventListener("resize", initFontSize, false);
 })()
 
+
+function formatTime(str) {
+  const arr = str.split("-");
+  return { y: Number(arr[0]), m: Number(arr[1]), d: Number(arr[2]) };
+}
+
+
 function formatNum(n) {
   if (n < 1000) {
     return Math.floor(n);
@@ -23,18 +30,29 @@ function formatNum(n) {
   }
 }
 
-function getNowFormatDate() {
-  var date = new Date();
-  var seperator1 = "-";
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var strDate = date.getDate();
-  if (month >= 1 && month <= 9) {
-      month = "0" + month;
+
+function formatEchartOption(config) {
+  return {
+    title: { text: config.text },
+    grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+    xAxis: [{ show: false, boundaryGap: false, data: config.xAxisData}],
+    yAxis: [{ show: false }],
+    series: [
+      {
+        type: 'line',
+        lineStyle: { width: 0 },
+        showSymbol: false,
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 1,
+            color: 'rgba(' + config.color + ', 0)'
+          }, {
+            offset: 0,
+            color: 'rgba(' + config.color + ')'
+          }])
+        },
+        data: config.seriesData
+      }
+    ]
   }
-  if (strDate >= 0 && strDate <= 9) {
-      strDate = "0" + strDate;
-  }
-  var currentdate = year + seperator1 + month + seperator1 + strDate;
-  return currentdate;
 }
