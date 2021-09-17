@@ -9,25 +9,41 @@ new Vue({
   },
   mounted() {
     this.init();
+    formatContData(DATA_C)
   },
   methods: {
     init() {
       const _this = this;
       this.swiper = new Swiper('.swiper-container', {
         speed: 800,
+        noSwiping: true,
+        noSwipingClass: 'stop-swiping',
         preventClicksPropagation: false,
         height: window.screen.height,
         direction: "vertical",
-        // 切换开始时
         onSlideChangeStart: function(swiper){
           _this.swiperIndex = swiper.activeIndex;
         },
       });
     },
-    // 加载图表
+    summaryClick(type) {
+      this.swiper.slideNext()
+    },
+    /**
+     * 
+     * @param {*} el: dom
+     * @param {*} config: object
+     * config: {
+     *  title: string,
+     *  color: string,
+     *  xAxisData: array,
+     *  seriesData: array
+     * }
+     */
     initEchart(el, config) {
       const echart = echarts.init(el);
       echart.setOption(formatEchartOption(config));
-    }
+    },
+    // 
   },
 });

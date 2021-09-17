@@ -1,8 +1,15 @@
 const DATA_C = [
-  {
-    isContract: 0,
-    entryTime: "",
-    leaveTime: "",
-    profit: 0
-  }
+  { isCont: 1, type: "s", eTime: "2021-01-01", lTime: "", pro: 132 },
+  { isCont: 1, type: "l", eTime: "2021-01-02", lTime: "", pro: 122 },
+  { isCont: 1, type: "s", eTime: "2021-01-03", lTime: "", pro: 172 },
+  { isCont: 1, type: "s", eTime: "2021-01-04", lTime: "", pro: -102 },
+  { isCont: 1, type: "l", eTime: "2021-01-05", lTime: "", pro: 132 },
+  { isCont: 1, type: "s", eTime: "2021-01-06", lTime: "", pro: 222 },
+  { isCont: 1, type: "s", eTime: "2021-01-07", lTime: "", pro: 132 },
+  { isCont: 1, type: "l", eTime: "2021-01-08", lTime: "", pro: -132 },
+  { isCont: 1, type: "s", eTime: "2021-01-09", lTime: "", pro: 132 },
+  { isCont: 1, type: "s", eTime: "2021-01-10", lTime: "", pro: 332 },
+  { isCont: 1, type: "l", eTime: "2021-01-11", lTime: "", pro: -112 },
+  { isCont: 1, type: "s", eTime: "2021-01-12", lTime: "", pro: 432 },
+  { isCont: 1, type: "s", eTime: "2021-01-13", lTime: "", pro: 632 },
 ]

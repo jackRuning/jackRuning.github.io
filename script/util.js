@@ -30,10 +30,30 @@ function formatNum(n) {
   }
 }
 
+function formatStocData(originData) {
+  const stock = {};
+}
+
+function formatContData(originData) {
+  console.log(originData);
+  const contr = {};
+}
+
+function formatCharData(originData) {
+  const xAxisData = [], seriesData = [];
+  let value = 0;
+  originData.forEach(item => {
+    value += item.pro;
+    seriesData.push(value);
+    xAxisData.push(item.isCont ? item.eTime : `${item.eTime}/${item.lTime}`);
+  })
+  return { xAxisData, seriesData }
+}
+
 
 function formatEchartOption(config) {
   return {
-    title: { text: config.text },
+    title: { text: config.title },
     grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
     xAxis: [{ show: false, boundaryGap: false, data: config.xAxisData}],
     yAxis: [{ show: false }],

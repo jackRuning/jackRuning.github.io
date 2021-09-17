@@ -23,66 +23,63 @@
                   <img class="user-head" src="./image/user_head.png" />
                 </div>
               </div>
-            </div>
-          </div> -->
-          <!---------------------------------------------------- part 2 -->
-          <!-- <div class="swiper-slide">
-            <div class="swiper_box">
-              <div class="flex-center summary_list">
-                <div class="flex-between summary_item">
-                  <i>S</i>
-                  <div class="right">
-                    <p>{{ 0 || '-'}}</p>
-                    <p>
-                      <span>{{ 0 || '-'}}</span>
-                      <span style="color: #ccc;">/</span>
-                      <span>{{ 0 || '-'}}</span>
-                      <span style="color: #ccc;">/</span>
-                      <span>{{ 0 || '-'}}</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="flex-between summary_item">
-                  <i>F</i>
-                  <div class="right">
-                    <p>{{ 0 || '-'}}</p>
-                    <p>
-                      <span>{{ 0 || '-'}}</span>
-                      <span style="color: #ccc;">/</span>
-                      <span>{{ 0 || '-'}}</span>
-                      <span style="color: #ccc;">/</span>
-                      <span>{{ 0 || '-'}}</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="flex-between summary_item">
-                  <i>C</i>
-                  <div class="right">
-                    <p>{{ 0 || '-'}}</p>
-                    <p>
-                      <span>{{ 0 || '-'}}</span>
-                      <span style="color: #ccc;">/</span>
-                      <span>{{ 0 || '-'}}</span>
-                      <span style="color: #ccc;">/</span>
-                      <span>{{ 0 || '-'}}</span>
-                    </p>
-                  </div>
-                </div>
-
-              </div>
               <div class="flex-center icon_arrow">
                 <img src="./image/icon_arrow.png" />
               </div>
             </div>
           </div> -->
+          <!---------------------------------------------------- part 2 -->
+          <div class="swiper-slide stop-swiping">
+            <div class="swiper_box">
+              <div class="flex-center summary_list">
+                <div class="flex-between summary_item" @click="summaryClick('S')">
+                  <i>S</i>
+                  <!-- <div class="right">
+                    <p>{{ 0 || '-'}}</p>
+                    <p>
+                      <span>{{ 0 || '-'}}</span>
+                      <span style="color: #ccc;">/</span>
+                      <span>{{ 0 || '-'}}</span>
+                      <span style="color: #ccc;">/</span>
+                      <span>{{ 0 || '-'}}</span>
+                    </p>
+                  </div> -->
+                </div>
+                <div class="flex-between summary_item" @click="summaryClick('F')">
+                  <i>F</i>
+                  <!-- <div class="right">
+                    <p>{{ 0 || '-'}}</p>
+                    <p>
+                      <span>{{ 0 || '-'}}</span>
+                      <span style="color: #ccc;">/</span>
+                      <span>{{ 0 || '-'}}</span>
+                      <span style="color: #ccc;">/</span>
+                      <span>{{ 0 || '-'}}</span>
+                    </p>
+                  </div> -->
+                </div>
+                <div class="flex-between summary_item" @click="summaryClick('C')">
+                  <i>C</i>
+                  <!-- <div class="right">
+                    <p>{{ 0 || '-'}}</p>
+                    <p>
+                      <span>{{ 0 || '-'}}</span>
+                      <span style="color: #ccc;">/</span>
+                      <span>{{ 0 || '-'}}</span>
+                      <span style="color: #ccc;">/</span>
+                      <span>{{ 0 || '-'}}</span>
+                    </p>
+                  </div> -->
+                </div>
+
+              </div>
+            </div>
+          </div>
           <!---------------------------------------------------- part 3 -->
           <div class="swiper-slide">
             <div class="swiper_box">
               <div class="info_container">
                 <div class="chart" id="chart_s"></div>
-              </div>
-              <div class="flex-center icon_arrow">
-                <img src="./image/icon_arrow.png" />
               </div>
             </div>
           </div>
@@ -94,6 +91,11 @@
     <script src="./script/vue.min.js"></script>
     <script src="./script/swiper.min.js"></script>
     <script src="./script/echarts.min.js"></script>
+    
+    <script src="./data/data_c.js"></script>
+
+    
+
     <script src="./script/util.js"></script>
     <script src="./script/index.js"></script>
   </body>
