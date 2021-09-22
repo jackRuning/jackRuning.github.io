@@ -4,12 +4,12 @@ new Vue({
     return {
       swiper: null,
       swiperIndex: 0,
-      plan_end_time: '',
+      showDataType: ''
     };
   },
   mounted() {
     this.init();
-    formatContData(DATA_C)
+    this.initInfo_C();
   },
   methods: {
     init() {
@@ -27,7 +27,29 @@ new Vue({
       });
     },
     summaryClick(type) {
-      this.swiper.slideNext()
+      this.showDataType = type;
+      this.swiper.slideNext();
+      this.initInfo()
+    },
+    initInfo() {
+      const type = this.showDataType;
+      switch (type) {
+        case "C": this.initInfo_C();
+      }
+    },
+    initInfo_C() {
+      const originData = DATA_C;
+
+      const {} = format_C_Data(originData);
+
+      const { xAxisData, seriesData } = formatCharData(DATA_C)
+      const ehcartConfig = {
+        title: '',
+        color: '255, 116, 106',
+        xAxisData: xAxisData,
+        seriesData: seriesData
+      }
+      this.initEchart("chart_c", ehcartConfig);
     },
     /**
      * 
@@ -41,7 +63,7 @@ new Vue({
      * }
      */
     initEchart(el, config) {
-      const echart = echarts.init(el);
+      const echart = echarts.init(document.getElementById(el));
       echart.setOption(formatEchartOption(config));
     },
     // 

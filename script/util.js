@@ -30,13 +30,46 @@ function formatNum(n) {
   }
 }
 
-function formatStocData(originData) {
-  const stock = {};
+function format_S_Data(originData) {
+  const s = {};
 }
 
-function formatContData(originData) {
-  console.log(originData);
-  const contr = {};
+function format_C_Data(originData) {
+  const start = 2000;
+
+  const c = {
+    trading: originData.length,
+    tradingL: 0,
+    tradingS: 0,
+    sum: 0,
+    sumL: 0,
+    sumS: 0,
+    rate: '',
+    maxWin: 0,
+    maxLose: 0,
+  };
+  
+  originData.forEach(item => {
+    c.sum += item.pro;
+    if (item.pro > c.maxWin) {
+      c.maxWin = item.pro;
+    }
+    if (item.pro < c.maxLose) {
+      c.maxLose = item.pro;
+    }
+    if (item.type == 'l') {
+      c.tradingL += 1;
+      c.sumL += item.pro;
+    }
+    if (item.type == 's') {
+      c.tradingS += 1;
+      c.sumS += item.pro;
+    }
+  })
+
+  c.rate = ((c.sum * 100) / start).toFixed(0) + '%';
+  console.log(c)
+  return c;
 }
 
 function formatCharData(originData) {
@@ -47,16 +80,16 @@ function formatCharData(originData) {
     seriesData.push(value);
     xAxisData.push(item.isCont ? item.eTime : `${item.eTime}/${item.lTime}`);
   })
-  return { xAxisData, seriesData }
+  return { xAxisData, seriesData };
 }
 
 
 function formatEchartOption(config) {
   return {
     title: { text: config.title },
-    grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
-    xAxis: [{ show: false, boundaryGap: false, data: config.xAxisData}],
-    yAxis: [{ show: false }],
+    grid: { left: '0', right: '0', bottom: '0', top: '0', containLabel: true },
+    xAxis: { show: false, boundaryGap: false, data: config.xAxisData},
+    yAxis: { show: false, type: 'value' },
     series: [
       {
         type: 'line',
@@ -70,6 +103,9 @@ function formatEchartOption(config) {
             offset: 0,
             color: 'rgba(' + config.color + ')'
           }])
+        },
+        markPoint: {
+          data: [{ type: 'max', name: 'Max' }]
         },
         data: config.seriesData
       }
